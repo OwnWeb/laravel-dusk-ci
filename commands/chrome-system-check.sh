@@ -18,7 +18,8 @@ if [[ "$COMPATIBLE" != "OK" ]]; then
   printf "${GREEN}Starting system Chromedriver (${SYSTEMCHROMEDRIVER}).\n"
   source start-system-chromedriver
 else
-  printf "${GREEN}Starting compatible (project) Chromedriver (${LARAVELCHROMEDRIVER}).${NC}\n"
-  source start-project-chromedriver
+#  printf "${GREEN}Starting compatible (project) Chromedriver (${LARAVELCHROMEDRIVER}).${NC}\n"
+#  source start-project-chromedriver
+  printf "${YELLOW}Chromedriver versions are compatible. Laravel will start chrome driver by itself${NC}\n"
 fi
 printf "${NC}"
