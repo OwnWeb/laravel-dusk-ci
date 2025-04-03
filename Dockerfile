@@ -1,5 +1,4 @@
 FROM ubuntu:noble
-MAINTAINER Chilio
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
@@ -26,59 +25,59 @@ RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
 RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev jq nginx
 # Install PHP
 RUN apt-get update && apt-get install -yq --fix-missing \
-     php8.2 \
-        php8.2-bcmath \
-        php8.2-bz2  \
-        php8.2-cli \
-        php8.2-common \
-        php8.2-curl \
-        php8.2-dba \
-        php8.2-dev \
-        php8.2-enchant \
-        php8.2-fpm \
-        php8.2-gd \
-        php8.2-gmp \
-        php8.2-imagick \
-        php8.2-imap \
-        php8.2-interbase \
-        php8.2-intl \
-        php8.2-ldap \
-        php8.2-mbstring \
-        php8.2-mysql \
-        php8.2-odbc \
-        php8.2-opcache \
-        php8.2-pgsql \
-        php8.2-phpdbg \
-        php8.2-pspell \
-        php8.2-raphf \
-        php8.2-readline \
-        php8.2-snmp \
-        php8.2-soap \
-        php8.2-sqlite3 \
-        php8.2-sybase \
-        php8.2-tidy \
-        php8.2-xml \
-        php8.2-xsl \
-        php8.2-zip \
-        php8.2-mongodb\
-        php8.2-redis \
-        php8.2-ssh2 \
-        php8.2-uuid \
-        php8.2-zmq \
-        php8.2-http \
-        php8.2-uploadprogress \
-        php8.2-yaml \
-        php8.2-memcached \
-        php8.2-memcache \
-        php8.2-mailparse \
-        php8.2-stomp \
-        php8.2-ds
+  php8.4 \
+  php8.4-bcmath \
+  php8.4-bz2  \
+  php8.4-cli \
+  php8.4-common \
+  php8.4-curl \
+  php8.4-dba \
+  php8.4-dev \
+  php8.4-enchant \
+  php8.4-fpm \
+  php8.4-gd \
+  php8.4-gmp \
+  php8.4-imagick \
+  php8.4-imap \
+  php8.4-interbase \
+  php8.4-intl \
+  php8.4-ldap \
+  php8.4-mbstring \
+  php8.4-mysql \
+  php8.4-odbc \
+  php8.4-opcache \
+  php8.4-pgsql \
+  php8.4-phpdbg \
+  php8.4-pspell \
+  php8.4-raphf \
+  php8.4-readline \
+  php8.4-snmp \
+  php8.4-soap \
+  php8.4-sqlite3 \
+  php8.4-sybase \
+  php8.4-tidy \
+  php8.4-xml \
+  php8.4-xsl \
+  php8.4-zip \
+  php8.4-mongodb\
+  php8.4-redis \
+  php8.4-ssh2 \
+  php8.4-uuid \
+  php8.4-zmq \
+  php8.4-http \
+  php8.4-uploadprogress \
+  php8.4-yaml \
+  php8.4-memcached \
+  php8.4-memcache \
+  php8.4-mailparse \
+  php8.4-stomp \
+  php8.4-ds
 
 
 
-RUN update-alternatives --set php /usr/bin/php8.2
-RUN update-alternatives --set phar /usr/bin/phar8.2
-RUN update-alternatives --set phar.phar /usr/bin/phar.phar8.2
+RUN update-alternatives --set php /usr/bin/php8.4
+RUN update-alternatives --set phar /usr/bin/phar8.4
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar8.4
 
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
@@ -93,17 +92,17 @@ RUN \
   && curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
   && curl -o /tmp/composer-setup.sig https://composer.github.io/installer.sig \
   && php -r "if (hash('SHA384', file_get_contents('/tmp/composer-setup.php')) \
-    !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); \
-    echo 'Invalid installer' . PHP_EOL; exit(1); }" \
+  !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); \
+  echo 'Invalid installer' . PHP_EOL; exit(1); }" \
   && php /tmp/composer-setup.php --filename=composer --install-dir=$COMPOSER_HOME
 
 RUN \
   apt-get install -yq --fix-missing xvfb fonts-ipafont-gothic xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base \
-    xfonts-scalable \
+  xfonts-scalable \
   && CHROMEDRIVER_VERSION=`curl  https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json | jq -r .channels.Stable.version` \
   && echo $CHROMEDRIVER_VERSION \
   && curl -sS -o /tmp/chromedriver_latest.zip \
-    https://storage.googleapis.com/chrome-for-testing-public/$CHROMEDRIVER_VERSION/linux64/chromedriver-linux64.zip \
+  https://storage.googleapis.com/chrome-for-testing-public/$CHROMEDRIVER_VERSION/linux64/chromedriver-linux64.zip \
   && dir -lh /tmp \
   && unzip -j /tmp/chromedriver_latest.zip chromedriver-linux64/chromedriver -d /tmp \
   && rm /tmp/chromedriver_latest.zip \
@@ -181,14 +180,14 @@ ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
 LABEL org.label-schema.build-date=$BUILD_DATE \
-          org.label-schema.name="Laravel Dusk CI Docker" \
-          org.label-schema.description="Test suite for Laravel Dusk in gitlab CI" \
-          org.label-schema.url="https://hub.docker.com/r/chilio/laravel-dusk-ci/" \
-          org.label-schema.vcs-ref=$VCS_REF \
-          org.label-schema.vcs-url="https://github.com/chilio/laravel-dusk-ci" \
-          org.label-schema.vendor="Chilio" \
-          org.label-schema.version=$VERSION \
-          org.label-schema.schema-version="1.0.0"
+  org.label-schema.name="Laravel Dusk CI Docker" \
+  org.label-schema.description="Test suite for Laravel Dusk in gitlab CI" \
+  org.label-schema.url="https://hub.docker.com/r/chilio/laravel-dusk-ci/" \
+  org.label-schema.vcs-ref=$VCS_REF \
+  org.label-schema.vcs-url="https://github.com/chilio/laravel-dusk-ci" \
+  org.label-schema.vendor="Chilio" \
+  org.label-schema.version=$VERSION \
+  org.label-schema.schema-version="1.0.0"
 
 
-CMD ["php-fpm8.2", "-F"]
+CMD ["php-fpm8.4", "-F"]
