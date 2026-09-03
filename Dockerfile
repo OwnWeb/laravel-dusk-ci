@@ -25,59 +25,58 @@ RUN apt-get update && apt-get install -yq --fix-missing libgd-tools
 RUN apt-get update && apt-get install -yq --fix-missing apt-transport-https libpng-dev jq nginx
 # Install PHP
 RUN apt-get update && apt-get install -yq --fix-missing \
-  php8.4 \
-  php8.4-bcmath \
-  php8.4-bz2  \
-  php8.4-cli \
-  php8.4-common \
-  php8.4-curl \
-  php8.4-dba \
-  php8.4-dev \
-  php8.4-enchant \
-  php8.4-fpm \
-  php8.4-gd \
-  php8.4-gmp \
-  php8.4-imagick \
-  php8.4-imap \
-  php8.4-interbase \
-  php8.4-intl \
-  php8.4-ldap \
-  php8.4-mbstring \
-  php8.4-mysql \
-  php8.4-odbc \
-  php8.4-opcache \
-  php8.4-pgsql \
-  php8.4-phpdbg \
-  php8.4-pspell \
-  php8.4-raphf \
-  php8.4-readline \
-  php8.4-snmp \
-  php8.4-soap \
-  php8.4-sqlite3 \
-  php8.4-sybase \
-  php8.4-tidy \
-  php8.4-xml \
-  php8.4-xsl \
-  php8.4-zip \
-  php8.4-mongodb\
-  php8.4-redis \
-  php8.4-ssh2 \
-  php8.4-uuid \
-  php8.4-zmq \
-  php8.4-http \
-  php8.4-uploadprogress \
-  php8.4-yaml \
-  php8.4-memcached \
-  php8.4-memcache \
-  php8.4-mailparse \
-  php8.4-stomp \
-  php8.4-ds
+  php8.5 \
+  php8.5-bcmath \
+  php8.5-bz2  \
+  php8.5-cli \
+  php8.5-common \
+  php8.5-curl \
+  php8.5-dba \
+  php8.5-dev \
+  php8.5-enchant \
+  php8.5-fpm \
+  php8.5-gd \
+  php8.5-gmp \
+  php8.5-imagick \
+  php8.5-imap \
+  php8.5-interbase \
+  php8.5-intl \
+  php8.5-ldap \
+  php8.5-mbstring \
+  php8.5-mysql \
+  php8.5-odbc \
+  php8.5-pgsql \
+  php8.5-phpdbg \
+  php8.5-pspell \
+  php8.5-raphf \
+  php8.5-readline \
+  php8.5-snmp \
+  php8.5-soap \
+  php8.5-sqlite3 \
+  php8.5-sybase \
+  php8.5-tidy \
+  php8.5-xml \
+  php8.5-xsl \
+  php8.5-zip \
+  php8.5-mongodb\
+  php8.5-redis \
+  php8.5-ssh2 \
+  php8.5-uuid \
+  php8.5-zmq \
+  php8.5-http \
+  php8.5-uploadprogress \
+  php8.5-yaml \
+  php8.5-memcached \
+  php8.5-memcache \
+  php8.5-mailparse \
+  php8.5-stomp \
+  php8.5-ds
 
 
 
-RUN update-alternatives --set php /usr/bin/php8.4
-RUN update-alternatives --set phar /usr/bin/phar8.4
-RUN update-alternatives --set phar.phar /usr/bin/phar.phar8.4
+RUN update-alternatives --set php /usr/bin/php8.5
+RUN update-alternatives --set phar /usr/bin/phar8.5
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar8.5
 
 RUN apt-get update && apt-get install -yq --fix-missing mc lynx mysql-client bzip2 make g++
 
@@ -190,4 +189,4 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
   org.label-schema.schema-version="1.0.0"
 
 
-CMD ["php-fpm8.4", "-F"]
+CMD ["php-fpm8.5", "-F"]
